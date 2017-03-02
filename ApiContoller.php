@@ -22,6 +22,25 @@ echo json_encode($arr);
 ?>
 
 
+'rules' => array(
+                // REST
+                array('api/schema', 'pattern' => 'api/models', 'verb' => 'GET'),
+                array('api/schema', 'pattern' => 'api/<model:\w+>/schema', 'verb' => 'GET'),
+                array('api/rest', 'pattern' => 'api/<model:\w+>/rest', 'verb' => 'GET'),
+
+                array('api/', 'pattern' => 'api/<model:\w+>', 'verb' => 'GET'),
+                array('api/action/<action:\w+>', 'pattern' => 'api/<model:\w+>/g/<action>', 'verb' => 'GET'),
+                array('api/action/<action:\w+>', 'pattern' => 'api/<model:\w+>/p/<action>', 'verb' => 'POST'),
+                array('api/action/<action:\w+>', 'pattern' => 'api/<model:\w+>/g/<action>/<id:\d+>', 'verb' => 'GET'),
+                array('api/action/<action:\w+>', 'pattern' => 'api/<model:\w+>/p/<action>/<id:\d+>', 'verb' => 'POST'),
+                array('api/view', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'GET'),
+                array('api/update', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'PUT'),
+                array('api/delete', 'pattern' => 'api/<model:\w+>/<id:\d+>', 'verb' => 'DELETE'),
+                array('api/create', 'pattern' => 'api/<model:\w+>', 'verb' => 'POST'),
+                
+              
+              ...
+
 # with AJAX withCredentials=false (cookies NOT sent)
 Header always set Access-Control-Allow-Origin "*"
 Header always set Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, PATCH, DELETE"
